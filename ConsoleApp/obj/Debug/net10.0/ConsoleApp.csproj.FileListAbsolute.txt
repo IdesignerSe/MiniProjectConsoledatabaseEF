@@ -1,0 +1,14 @@
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\bin\Debug\net10.0\ConsoleApp.exe
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\bin\Debug\net10.0\ConsoleApp.deps.json
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\bin\Debug\net10.0\ConsoleApp.runtimeconfig.json
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\bin\Debug\net10.0\ConsoleApp.dll
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\bin\Debug\net10.0\ConsoleApp.pdb
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ConsoleApp.dll
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\refint\ConsoleApp.dll
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ConsoleApp.pdb
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\MagoS\Documents\GitHub\Lates Clone\MiniProjectConsoledatabaseEF\ConsoleApp\obj\Debug\net10.0\ref\ConsoleApp.dll
