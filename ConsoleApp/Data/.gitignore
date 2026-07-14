@@ -1,0 +1,28 @@
+
+Contenido recomendado para proyectos .NET:
+
+```gitignore
+# Build folders
+bin/
+obj/
+
+# VS Code
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+
+# Logs
+*.log
+
+# EF Core Migrations metadata
+ConsoleApp/Migrations/*Designer.cs
+
+# Database files (important for privacy)
+*.mdf
+*.ldf
+*.bak
+
+# VS Code workspace junk
+*.slnx
