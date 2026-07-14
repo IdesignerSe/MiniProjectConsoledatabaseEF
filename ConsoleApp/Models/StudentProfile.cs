@@ -10,6 +10,6 @@ namespace ConsoleApp.Models
         [MaxLength(200)]
         public string Address { get; set; } = string.Empty;
 
-        public Student Student { get; set; }
+        public Student? Student { get; set; }
     }
 }
