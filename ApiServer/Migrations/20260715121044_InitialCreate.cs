@@ -70,12 +70,15 @@ namespace ApiServer.Migrations
                 name: "Profiles",
                 columns: table => new
                 {
-                    StudentId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Address = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Address = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
+                    Phone = table.Column<string>(type: "TEXT", nullable: false),
+                    StudentId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Profiles", x => x.StudentId);
+                    table.PrimaryKey("PK_Profiles", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Profiles_Students_StudentId",
                         column: x => x.StudentId,
@@ -93,6 +96,12 @@ namespace ApiServer.Migrations
                 name: "IX_Enrollments_StudentId",
                 table: "Enrollments",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Profiles_StudentId",
+                table: "Profiles",
+                column: "StudentId",
+                unique: true);
         }
 
         /// <inheritdoc />

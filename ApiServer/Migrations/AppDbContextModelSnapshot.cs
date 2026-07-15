@@ -83,7 +83,8 @@ namespace ApiServer.Migrations
 
             modelBuilder.Entity("ApiServer.Models.StudentProfile", b =>
                 {
-                    b.Property<int>("StudentId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
@@ -91,7 +92,17 @@ namespace ApiServer.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("TEXT");
 
-                    b.HasKey("StudentId");
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentId")
+                        .IsUnique();
 
                     b.ToTable("Profiles");
                 });
