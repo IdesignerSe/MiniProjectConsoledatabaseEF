@@ -3,27 +3,20 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext with SQLite
+// Add DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=school.db"));
 
-// Add controllers
-builder.Services.AddControllers();
-
-// Add CORS for React
-builder.Services.AddCors(options =>
+// Add controllers + fix for JSON cycles
+builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    options.AddPolicy("AllowReact",
-        policy => policy.AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
+    options.JsonSerializerOptions.ReferenceHandler =
+        System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
 
 var app = builder.Build();
 
-app.UseCors("AllowReact");
-app.UseHttpsRedirection();
-app.UseAuthorization();
+// Map controllers
 app.MapControllers();
 
 app.Run();
