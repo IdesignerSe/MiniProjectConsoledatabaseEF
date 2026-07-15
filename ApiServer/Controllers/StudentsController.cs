@@ -32,5 +32,21 @@ namespace ApiServer.Controllers
         {
             return Ok("API funciona");
         }
+
+        // SEED: Inserta un estudiante de prueba
+        [HttpGet("seed")]
+        public IActionResult Seed()
+        {
+            var student = new Student
+            {
+                Name = "Heb",
+                Email = "heb@example.com"
+            };
+
+            _db.Students.Add(student);
+            _db.SaveChanges();
+
+            return Ok("Seeded");
+        }
     }
 }
