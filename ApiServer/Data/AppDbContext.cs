@@ -1,36 +1,14 @@
-using ApiServer.Data;
+using ApiServer.Models;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace ApiServer.Data;
 
-// Add DbContext (kopplar API till din EF-databas)
-builder.Services.AddDbContext<AppDbContext>();
-
-// Add CORS så React får prata med API
-builder.Services.AddCors(options =>
+public class AppDbContext : DbContext
 {
-    options.AddPolicy("AllowReact",
-        policy => policy.AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod());
-});
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 
-// Add controllers
-builder.Services.AddControllers();
-
-var app = builder.Build();
-
-// Use CORS
-app.UseCors("AllowReact");
-
-// Use HTTPS redirection
-app.UseHttpsRedirection();
-
-// Use Authorization (behövs för swagger)
-app.UseAuthorization();
-
-// Map controllers
-app.MapControllers();
-
-// Start API-servern
-app.Run();
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<Enrollment> Enrollments { get; set; }
+    public DbSet<StudentProfile> Profiles { get; set; }
+}

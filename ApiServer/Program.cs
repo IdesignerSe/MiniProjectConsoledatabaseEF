@@ -3,8 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext
-builder.Services.AddDbContext<AppDbContext>();
+// Add DbContext with SQLite
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=school.db"));
 
 // Add controllers
 builder.Services.AddControllers();
@@ -20,17 +21,9 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Use CORS
 app.UseCors("AllowReact");
-
-// Use HTTPS redirection
 app.UseHttpsRedirection();
-
-// Use Authorization
 app.UseAuthorization();
-
-// Map controllers
 app.MapControllers();
 
-// Run API
 app.Run();
