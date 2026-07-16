@@ -170,6 +170,11 @@ li {
   font-size: 1rem;
 }
 
+li button {
+  margin-left: 8px;
+}
+
+
 li:last-child {
   border-bottom: none;
 }
@@ -246,5 +251,102 @@ li:last-child {
   }
   .section.enrollments h2 {
     color: #f87171;
+  }
+}
+/* ========================================= */
+/* ===== BUTTONS (CRUD) ===== */
+/* ========================================= */
+
+button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+/* ADD (default) */
+form button[type="submit"] {
+  background: var(--accent);
+  color: white;
+}
+form button[type="submit"]:hover {
+  background: #8a2be2;
+}
+
+/* EDIT */
+button.edit {
+  background: #2563eb; /* blue */
+  color: white;
+}
+button.edit:hover {
+  background: #1d4ed8;
+}
+
+/* DELETE */
+button.delete {
+  background: #dc2626; /* red */
+  color: white;
+}
+button.delete:hover {
+  background: #b91c1c;
+}
+
+/* SAVE */
+button.save {
+  background: #059669; /* green */
+  color: white;
+}
+button.save:hover {
+  background: #047857;
+}
+
+/* CANCEL */
+button.cancel {
+  background: #6b7280; /* gray */
+  color: white;
+}
+button.cancel:hover {
+  background: #4b5563;
+}
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+  button {
+    color: white;
+  }
+
+  form button[type="submit"] {
+    background: var(--accent);
+  }
+
+  button.edit {
+    background: #3b82f6;
+  }
+  button.edit:hover {
+    background: #2563eb;
+  }
+
+  button.delete {
+    background: #ef4444;
+  }
+  button.delete:hover {
+    background: #dc2626;
+  }
+
+  button.save {
+    background: #34d399;
+  }
+  button.save:hover {
+    background: #10b981;
+  }
+
+  button.cancel {
+    background: #9ca3af;
+  }
+  button.cancel:hover {
+    background: #6b7280;
   }
 }

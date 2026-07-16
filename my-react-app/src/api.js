@@ -115,3 +115,33 @@ export async function createEnrollment(enrollment) {
     return null;
   }
 }
+
+export async function updateStudent(id, student) {
+  try {
+    const response = await fetch(`${API_BASE}/students/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(student)
+    });
+
+    if (!response.ok) throw new Error("Failed to update student");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return null;
+  }
+}
+
+export async function deleteStudent(id) {
+  try {
+    const response = await fetch(`${API_BASE}/students/${id}`, {
+      method: "DELETE"
+    });
+
+    if (!response.ok) throw new Error("Failed to delete student");
+    return true;
+  } catch (error) {
+    console.error("API error:", error);
+    return false;
+  }
+}
