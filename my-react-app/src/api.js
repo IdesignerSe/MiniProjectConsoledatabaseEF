@@ -21,3 +21,25 @@ export async function getCourses() {
     return [];
   }
 }
+
+export async function getProfiles() {
+  try {
+    const response = await fetch(`${API_BASE}/profiles`);
+    if (!response.ok) throw new Error("Failed to fetch profiles");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return [];
+  }
+}
+
+export async function getEnrollments() {
+  try {
+    const response = await fetch(`${API_BASE}/enrollments`);
+    if (!response.ok) throw new Error("Failed to fetch enrollments");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return [];
+  }
+}
