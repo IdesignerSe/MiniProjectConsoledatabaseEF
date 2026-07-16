@@ -18,7 +18,7 @@ export default function ProfilesList() {
   }
 
   return (
-    <div>
+    <div className="section profiles">
       <h2>Profiles</h2>
 
       <CreateProfileForm onCreated={handleProfileCreated} />

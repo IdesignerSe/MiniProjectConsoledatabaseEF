@@ -18,7 +18,8 @@ export default function CoursesList() {
   }
 
   return (
-    <div>
+    <div className="section courses">
+
       <h2>Courses</h2>
 
       <CreateCourseForm onCreated={handleCourseCreated} />

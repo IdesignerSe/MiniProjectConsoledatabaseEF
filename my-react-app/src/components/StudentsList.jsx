@@ -18,7 +18,7 @@ export default function StudentsList() {
   }
 
   return (
-    <div>
+    <div className="section students">
       <h2>Students</h2>
 
       <CreateStudentForm onCreated={handleStudentCreated} />

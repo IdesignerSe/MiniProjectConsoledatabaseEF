@@ -173,3 +173,78 @@ li {
 li:last-child {
   border-bottom: none;
 }
+
+/* ========================================= */
+/* ===== SECTION COLORS (NEW) ===== */
+/* ========================================= */
+
+.section.students {
+  border-left: 6px solid #4f46e5; /* Indigo */
+  background: rgba(79, 70, 229, 0.05);
+}
+
+.section.students h2 {
+  color: #4f46e5;
+}
+
+.section.courses {
+  border-left: 6px solid #059669; /* Emerald */
+  background: rgba(5, 150, 105, 0.05);
+}
+
+.section.courses h2 {
+  color: #059669;
+}
+
+.section.profiles {
+  border-left: 6px solid #d97706; /* Amber */
+  background: rgba(217, 119, 6, 0.05);
+}
+
+.section.profiles h2 {
+  color: #d97706;
+}
+
+.section.enrollments {
+  border-left: 6px solid #dc2626; /* Red */
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.section.enrollments h2 {
+  color: #dc2626;
+}
+
+/* ===== DARK MODE COLORS ===== */
+@media (prefers-color-scheme: dark) {
+  .section.students {
+    border-left-color: #818cf8;
+    background: rgba(129, 140, 248, 0.1);
+  }
+  .section.students h2 {
+    color: #818cf8;
+  }
+
+  .section.courses {
+    border-left-color: #34d399;
+    background: rgba(52, 211, 153, 0.1);
+  }
+  .section.courses h2 {
+    color: #34d399;
+  }
+
+  .section.profiles {
+    border-left-color: #fbbf24;
+    background: rgba(251, 191, 36, 0.1);
+  }
+  .section.profiles h2 {
+    color: #fbbf24;
+  }
+
+  .section.enrollments {
+    border-left-color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+  }
+  .section.enrollments h2 {
+    color: #f87171;
+  }
+}

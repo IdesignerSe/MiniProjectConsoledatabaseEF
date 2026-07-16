@@ -18,7 +18,7 @@ export default function EnrollmentsList() {
   }
 
   return (
-    <div>
+    <div className="section enrollments">
       <h2>Enrollments</h2>
 
       <CreateEnrollmentForm onCreated={handleEnrollmentCreated} />
