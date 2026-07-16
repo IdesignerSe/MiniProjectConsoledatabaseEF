@@ -21,8 +21,8 @@ export default function CoursesList() {
 
       <ul>
         {courses.map(c => (
-          <li key={c.Id}>
-            {c.Title} — {c.Credits} credits
+          <li key={c.id}>
+            {c.title} — {c.credits} credits
           </li>
         ))}
       </ul>
