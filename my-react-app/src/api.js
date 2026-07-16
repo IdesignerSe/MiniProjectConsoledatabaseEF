@@ -84,6 +84,36 @@ export async function createCourse(course) {
   }
 }
 
+export async function updateCourse(id, course) {
+  try {
+    const response = await fetch(`${API_BASE}/courses/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(course)
+    });
+
+    if (!response.ok) throw new Error("Failed to update course");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return null;
+  }
+}
+
+export async function deleteCourse(id) {
+  try {
+    const response = await fetch(`${API_BASE}/courses/${id}`, {
+      method: "DELETE"
+    });
+
+    if (!response.ok) throw new Error("Failed to delete course");
+    return true;
+  } catch (error) {
+    console.error("API error:", error);
+    return false;
+  }
+}
+
 export async function createProfile(profile) {
   try {
     const response = await fetch(`${API_BASE}/profiles`, {
