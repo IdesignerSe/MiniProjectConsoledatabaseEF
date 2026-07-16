@@ -1,7 +1,7 @@
-using ApiServer.Data;
-using ApiServer.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ApiServer.Data;
+using ApiServer.Models;
 
 namespace ApiServer.Controllers
 {
@@ -9,44 +9,29 @@ namespace ApiServer.Controllers
     [Route("api/[controller]")]
     public class StudentsController : ControllerBase
     {
-        private readonly AppDbContext _db;
+        private readonly AppDbContext _context;
 
-        public StudentsController(AppDbContext db)
+        public StudentsController(AppDbContext context)
         {
-            _db = db;
+            _context = context;
         }
 
+        // GET: api/students
         [HttpGet]
-        public IActionResult GetStudents()
+        public async Task<IActionResult> GetStudents()
         {
-            var students = _db.Students
-                .Include(s => s.Profile)
-                .ToList();
-
+            var students = await _context.Students.ToListAsync();
             return Ok(students);
         }
 
-        // Endpoint de prueba
-        [HttpGet("test")]
-        public IActionResult Test()
+        // POST: api/students
+        [HttpPost]
+        public async Task<IActionResult> CreateStudent([FromBody] Student student)
         {
-            return Ok("API funciona");
-        }
+            _context.Students.Add(student);
+            await _context.SaveChangesAsync();
 
-        // SEED: Inserta un estudiante de prueba
-        [HttpGet("seed")]
-        public IActionResult Seed()
-        {
-            var student = new Student
-            {
-                Name = "Heb",
-                Email = "heb@example.com"
-            };
-
-            _db.Students.Add(student);
-            _db.SaveChanges();
-
-            return Ok("Seeded");
+            return CreatedAtAction(nameof(GetStudents), new { id = student.Id }, student);
         }
     }
 }
