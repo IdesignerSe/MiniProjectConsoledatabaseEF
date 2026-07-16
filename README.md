@@ -116,15 +116,21 @@ All functions use fetch() and return JSON data.
 1. Clone the repository
 
 git clone <your-repo>
+
 2. Install dependencies
 
 npm install
+
 3. Start the React development server
 
 npm run dev
+
 4. Start the .NET API (backend)
 
 dotnet run
 
+
 Make sure the API is running at:
+
 http://localhost:5104/api
+
