@@ -130,6 +130,36 @@ export async function createProfile(profile) {
   }
 }
 
+export async function updateProfile(id, profile) {
+  try {
+    const response = await fetch(`${API_BASE}/profiles/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(profile)
+    });
+
+    if (!response.ok) throw new Error("Failed to update profile");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return null;
+  }
+}
+
+export async function deleteProfile(id) {
+  try {
+    const response = await fetch(`${API_BASE}/profiles/${id}`, {
+      method: "DELETE"
+    });
+
+    if (!response.ok) throw new Error("Failed to delete profile");
+    return true;
+  } catch (error) {
+    console.error("API error:", error);
+    return false;
+  }
+}
+
 export async function createEnrollment(enrollment) {
   try {
     const response = await fetch(`${API_BASE}/enrollments`, {
