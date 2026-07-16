@@ -1,7 +1,14 @@
-export default function App() {
+import StudentsList from "./components/StudentsList";
+import CoursesList from "./components/CoursesList";
+
+function App() {
   return (
     <div>
-      <h1>Hello React + Vite</h1>
+      <h1>School System</h1>
+      <StudentsList />
+      <CoursesList />
     </div>
   );
 }
+
+export default App;
