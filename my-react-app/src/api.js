@@ -1,5 +1,9 @@
 const API_BASE = "http://localhost:5104/api";
 
+// =========================
+// GET REQUESTS
+// =========================
+
 export async function getStudents() {
   try {
     const response = await fetch(`${API_BASE}/students`);
@@ -41,5 +45,73 @@ export async function getEnrollments() {
   } catch (error) {
     console.error("API error:", error);
     return [];
+  }
+}
+
+// =========================
+// POST REQUESTS
+// =========================
+
+export async function createStudent(student) {
+  try {
+    const response = await fetch(`${API_BASE}/students`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(student)
+    });
+
+    if (!response.ok) throw new Error("Failed to create student");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return null;
+  }
+}
+
+export async function createCourse(course) {
+  try {
+    const response = await fetch(`${API_BASE}/courses`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(course)
+    });
+
+    if (!response.ok) throw new Error("Failed to create course");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return null;
+  }
+}
+
+export async function createProfile(profile) {
+  try {
+    const response = await fetch(`${API_BASE}/profiles`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(profile)
+    });
+
+    if (!response.ok) throw new Error("Failed to create profile");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return null;
+  }
+}
+
+export async function createEnrollment(enrollment) {
+  try {
+    const response = await fetch(`${API_BASE}/enrollments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(enrollment)
+    });
+
+    if (!response.ok) throw new Error("Failed to create enrollment");
+    return await response.json();
+  } catch (error) {
+    console.error("API error:", error);
+    return null;
   }
 }

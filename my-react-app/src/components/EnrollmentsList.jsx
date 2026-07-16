@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getEnrollments } from "../api";
+import CreateEnrollmentForm from "./CreateEnrollmentForm";
 
 export default function EnrollmentsList() {
   const [enrollments, setEnrollments] = useState([]);
@@ -7,17 +8,20 @@ export default function EnrollmentsList() {
   useEffect(() => {
     async function load() {
       const data = await getEnrollments();
-      console.log("Enrollments from API:", data);
       setEnrollments(data);
     }
     load();
   }, []);
 
+  function handleEnrollmentCreated(enrollment) {
+    setEnrollments(prev => [...prev, enrollment]);
+  }
+
   return (
     <div>
       <h2>Enrollments</h2>
 
-      {enrollments.length === 0 && <p>No enrollments found.</p>}
+      <CreateEnrollmentForm onCreated={handleEnrollmentCreated} />
 
       <ul>
         {enrollments.map(e => (

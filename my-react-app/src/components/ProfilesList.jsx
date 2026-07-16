@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProfiles } from "../api";
+import CreateProfileForm from "./CreateProfileForm";
 
 export default function ProfilesList() {
   const [profiles, setProfiles] = useState([]);
@@ -7,22 +8,25 @@ export default function ProfilesList() {
   useEffect(() => {
     async function load() {
       const data = await getProfiles();
-      console.log("Profiles from API:", data);
       setProfiles(data);
     }
     load();
   }, []);
 
+  function handleProfileCreated(profile) {
+    setProfiles(prev => [...prev, profile]);
+  }
+
   return (
     <div>
       <h2>Profiles</h2>
 
-      {profiles.length === 0 && <p>No profiles found.</p>}
+      <CreateProfileForm onCreated={handleProfileCreated} />
 
       <ul>
         {profiles.map(p => (
           <li key={p.id}>
-            {p.address} — {p.phone}
+            {p.address} — {p.phone} (Student #{p.studentId})
           </li>
         ))}
       </ul>

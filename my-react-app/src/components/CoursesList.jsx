@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCourses } from "../api";
+import CreateCourseForm from "./CreateCourseForm";
 
 export default function CoursesList() {
   const [courses, setCourses] = useState([]);
@@ -7,17 +8,20 @@ export default function CoursesList() {
   useEffect(() => {
     async function load() {
       const data = await getCourses();
-      console.log("Courses from API:", data);
       setCourses(data);
     }
     load();
   }, []);
 
+  function handleCourseCreated(course) {
+    setCourses(prev => [...prev, course]);
+  }
+
   return (
     <div>
       <h2>Courses</h2>
 
-      {courses.length === 0 && <p>No courses found.</p>}
+      <CreateCourseForm onCreated={handleCourseCreated} />
 
       <ul>
         {courses.map(c => (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getStudents } from "../api";
+import CreateStudentForm from "./CreateStudentForm";
 
 export default function StudentsList() {
   const [students, setStudents] = useState([]);
@@ -12,9 +13,16 @@ export default function StudentsList() {
     load();
   }, []);
 
+  function handleStudentCreated(student) {
+    setStudents(prev => [...prev, student]);
+  }
+
   return (
     <div>
       <h2>Students</h2>
+
+      <CreateStudentForm onCreated={handleStudentCreated} />
+
       <ul>
         {students.map(s => (
           <li key={s.id}>
