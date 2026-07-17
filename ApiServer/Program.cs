@@ -36,7 +36,7 @@ var app = builder.Build();
 app.UseOpenApi();
 app.UseSwaggerUi(settings =>
 {
-    settings.DocumentPath = "/swagger/v1/swagger.json"; // ⭐ FIX
+    settings.DocumentPath = "/swagger/v1/swagger.json"; 
 });
 
 // CORS
