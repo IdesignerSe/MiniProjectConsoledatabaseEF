@@ -24,6 +24,18 @@ namespace ApiServer.Controllers
             return Ok(students);
         }
 
+        // GET: api/students/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetStudent(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+
+            if (student == null)
+                return NotFound();
+
+            return Ok(student);
+        }
+
         // POST: api/students
         [HttpPost]
         public async Task<IActionResult> CreateStudent([FromBody] Student student)
@@ -31,7 +43,39 @@ namespace ApiServer.Controllers
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetStudents), new { id = student.Id }, student);
+            return CreatedAtAction(nameof(GetStudent), new { id = student.Id }, student);
+        }
+
+        // PUT: api/students/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateStudent(int id, [FromBody] Student updatedStudent)
+        {
+            var student = await _context.Students.FindAsync(id);
+
+            if (student == null)
+                return NotFound();
+
+            student.Name = updatedStudent.Name;
+            student.Age = updatedStudent.Age;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(student);
+        }
+
+        // DELETE: api/students/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteStudent(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+
+            if (student == null)
+                return NotFound();
+
+            _context.Students.Remove(student);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
