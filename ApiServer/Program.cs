@@ -3,18 +3,22 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext
+// DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=school.db"));
 
-// Add controllers + fix for JSON cycles
+// Controllers + JSON fix
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler =
         System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
 
-// ⭐ ENABLE CORS so React (5173) can call the API (5104)
+// NSwag
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApiDocument();
+
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact",
@@ -28,10 +32,17 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// ⭐ ACTIVATE CORS
+// NSwag UI
+app.UseOpenApi();
+app.UseSwaggerUi(settings =>
+{
+    settings.DocumentPath = "/swagger/v1/swagger.json"; // ⭐ FIX
+});
+
+// CORS
 app.UseCors("AllowReact");
 
-// Map controllers
+// Controllers
 app.MapControllers();
 
 app.Run();
