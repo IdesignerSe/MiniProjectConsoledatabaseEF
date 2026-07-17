@@ -1,14 +1,20 @@
-namespace ApiServer.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Enrollment
+namespace ApiServer.Models
 {
-    public int Id { get; set; }
+    public class Enrollment
+    {
+        public int Id { get; set; }
 
-    public int StudentId { get; set; }
-    public Student Student { get; set; }
+        // Relación con Student
+        public int StudentId { get; set; }
+        public Student? Student { get; set; }
 
-    public int CourseId { get; set; }
-    public Course Course { get; set; }
+        // Relación con Course
+        public int CourseId { get; set; }
+        public Course? Course { get; set; }
 
-    public DateTime EnrolledAt { get; set; } = DateTime.Now;
+        // Fecha de inscripción
+        public DateTime EnrolledAt { get; set; } = DateTime.Now;
+    }
 }

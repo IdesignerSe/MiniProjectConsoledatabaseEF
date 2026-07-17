@@ -12,6 +12,6 @@ namespace ApiServer.Models
         public string Phone { get; set; } = string.Empty;
 
         public int StudentId { get; set; }   // FK
-        public Student Student { get; set; }
+        public Student? Student { get; set; }
     }
 }
