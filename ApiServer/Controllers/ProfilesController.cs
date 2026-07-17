@@ -20,15 +20,15 @@ namespace ApiServer.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProfiles()
         {
-            var profiles = await _context.Profiles.ToListAsync();
+            var profiles = await _context.StudentProfiles.ToListAsync();
             return Ok(profiles);
         }
 
         // POST: api/profiles
         [HttpPost]
-        public async Task<IActionResult> CreateProfile([FromBody] Profile profile)
+        public async Task<IActionResult> CreateProfile([FromBody] StudentProfile profile)
         {
-            _context.Profiles.Add(profile);
+            _context.StudentProfiles.Add(profile);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetProfiles), new { id = profile.Id }, profile);
