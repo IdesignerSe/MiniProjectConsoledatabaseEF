@@ -24,6 +24,18 @@ namespace ApiServer.Controllers
             return Ok(courses);
         }
 
+        // GET: api/courses/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCourse(int id)
+        {
+            var course = await _context.Courses.FindAsync(id);
+
+            if (course == null)
+                return NotFound();
+
+            return Ok(course);
+        }
+
         // POST: api/courses
         [HttpPost]
         public async Task<IActionResult> CreateCourse([FromBody] Course course)
@@ -31,7 +43,39 @@ namespace ApiServer.Controllers
             _context.Courses.Add(course);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetCourses), new { id = course.Id }, course);
+            return CreatedAtAction(nameof(GetCourse), new { id = course.Id }, course);
+        }
+
+        // PUT: api/courses/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCourse(int id, [FromBody] Course updatedCourse)
+        {
+            var course = await _context.Courses.FindAsync(id);
+
+            if (course == null)
+                return NotFound();
+
+            course.Title = updatedCourse.Title;
+            course.Credits = updatedCourse.Credits;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(course);
+        }
+
+        // DELETE: api/courses/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCourse(int id)
+        {
+            var course = await _context.Courses.FindAsync(id);
+
+            if (course == null)
+                return NotFound();
+
+            _context.Courses.Remove(course);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }

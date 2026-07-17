@@ -24,6 +24,18 @@ namespace ApiServer.Controllers
             return Ok(enrollments);
         }
 
+        // GET: api/enrollments/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetEnrollment(int id)
+        {
+            var enrollment = await _context.Enrollments.FindAsync(id);
+
+            if (enrollment == null)
+                return NotFound();
+
+            return Ok(enrollment);
+        }
+
         // POST: api/enrollments
         [HttpPost]
         public async Task<IActionResult> CreateEnrollment([FromBody] Enrollment enrollment)
@@ -33,7 +45,40 @@ namespace ApiServer.Controllers
             _context.Enrollments.Add(enrollment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetEnrollments), new { id = enrollment.Id }, enrollment);
+            return CreatedAtAction(nameof(GetEnrollment), new { id = enrollment.Id }, enrollment);
+        }
+
+        // PUT: api/enrollments/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEnrollment(int id, [FromBody] Enrollment updatedEnrollment)
+        {
+            var enrollment = await _context.Enrollments.FindAsync(id);
+
+            if (enrollment == null)
+                return NotFound();
+
+            enrollment.StudentId = updatedEnrollment.StudentId;
+            enrollment.CourseId = updatedEnrollment.CourseId;
+            enrollment.EnrolledAt = updatedEnrollment.EnrolledAt;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(enrollment);
+        }
+
+        // DELETE: api/enrollments/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEnrollment(int id)
+        {
+            var enrollment = await _context.Enrollments.FindAsync(id);
+
+            if (enrollment == null)
+                return NotFound();
+
+            _context.Enrollments.Remove(enrollment);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
